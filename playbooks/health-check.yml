@@ -1,0 +1,26 @@
+---
+- name: Verify web server health
+  hosts: web
+  gather_facts: false
+
+  tasks:
+    - name: Check Nginx HTTP response
+      ansible.builtin.uri:
+        url: http://127.0.0.1/
+        status_code: 200
+        return_content: true
+      register: website_response
+
+    - name: Verify website content
+      ansible.builtin.assert:
+        that:
+          - website_response.content | length > 0
+        fail_msg: "Website returned an empty response"
+        success_msg: "Website is responding successfully"
+
+    - name: Check Nginx service status
+      ansible.builtin.command:
+        cmd: systemctl is-active nginx
+      register: nginx_status
+      changed_when: false
+      failed_when: nginx_status.stdout != "active"

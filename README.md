@@ -49,3 +49,18 @@ configuration files are excluded from Git.
 - Configuration management
 - Git version control
 - AWS EC2 administration
+## Ansible Roles
+
+The project uses an Nginx role to automate:
+
+- Nginx installation
+- Service startup and enablement
+- Static website deployment
+- Nginx restart when website content changes
+
+## Run the Deployment
+
+From the project root:
+
+```bash
+ansible-playbook -i hosts playbooks/site.yml
