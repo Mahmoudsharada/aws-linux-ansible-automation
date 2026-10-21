@@ -1,0 +1,22 @@
+# SSH private keys
+*.pem
+*.key
+id_rsa
+id_ed25519
+
+# Vim temporary files
+*.swp
+*.swo
+*.sw?
+
+# Ansible temporary files
+*.retry
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Local AWS configuration
+hosts
+ansible.cfg

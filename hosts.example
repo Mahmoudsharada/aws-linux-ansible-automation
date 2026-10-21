@@ -1,0 +1,13 @@
+[mysite:children]
+web
+db
+
+[web]
+web01 ansible_host=WEB_PRIVATE_IP
+
+[db]
+db01 ansible_host=DB_PRIVATE_IP
+
+[all:vars]
+ansible_user=ec2-user
+ansible_python_interpreter=/usr/bin/python3.9
